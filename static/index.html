@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Business Intelligence SQL Agent</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                BI
+            </div>
+
+            <div class="brand-info">
+
+                <h1>
+                    Business Intelligence
+                    <span>SQL Agent</span>
+                </h1>
+
+                <p>
+                    Ask your data in plain language
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="connection-status">
+
+            <span class="status-dot"></span>
+
+            <span>
+                Database connected
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN LAYOUT ================= -->
+
+    <main class="main-layout">
+
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar">
+
+
+            <!-- New Analysis -->
+
+            <button
+                id="newAnalysisButton"
+                class="new-analysis-button"
+                type="button"
+            >
+
+                <span>+</span>
+
+                New analysis
+
+            </button>
+
+
+            <!-- ================= HISTORY ================= -->
+
+            <div class="sidebar-section">
+
+                <div class="section-heading">
+
+                    <h3>
+                        History
+                    </h3>
+
+                    <button
+                        id="clearHistoryButton"
+                        class="clear-history"
+                        type="button"
+                    >
+                        Clear
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="historyList"
+                    class="history-list"
+                >
+
+                    <div
+                        id="emptyHistory"
+                        class="history-empty"
+                    >
+                        Your questions will appear here.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= EXAMPLE QUESTIONS ================= -->
+
+            <div class="sidebar-section">
+
+                <h3>
+                    Try asking
+                </h3>
+
+
+                <button
+                    class="example-question"
+                    type="button"
+                    data-question="What is our total revenue?"
+                >
+                    What is our total revenue?
+                </button>
+
+
+                <button
+                    class="example-question"
+                    type="button"
+                    data-question="Which product generated the highest revenue?"
+                >
+                    Which product generated the highest revenue?
+                </button>
+
+
+                <button
+                    class="example-question"
+                    type="button"
+                    data-question="Show revenue by category."
+                >
+                    Show revenue by category.
+                </button>
+
+
+                <button
+                    class="example-question"
+                    type="button"
+                    data-question="Who are our top customers?"
+                >
+                    Who are our top customers?
+                </button>
+
+            </div>
+
+
+            <!-- ================= HOW IT WORKS ================= -->
+
+            <div class="sidebar-section">
+
+                <h3>
+                    How it works
+                </h3>
+
+
+                <div class="workflow">
+
+
+                    <div class="workflow-item">
+
+                        <div class="workflow-number">
+                            01
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                You ask
+                            </strong>
+
+                            <small>
+                                In everyday language
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="workflow-item">
+
+                        <div class="workflow-number">
+                            02
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                SQL is written
+                            </strong>
+
+                            <small>
+                                Shown to you every time
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="workflow-item">
+
+                        <div class="workflow-number">
+                            03
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Data is read
+                            </strong>
+
+                            <small>
+                                Live PostgreSQL
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="workflow-item">
+
+                        <div class="workflow-number">
+                            04
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                You get an answer
+                            </strong>
+
+                            <small>
+                                Text, table or chart
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= SECURITY ================= -->
+
+            <div class="security-card">
+
+                <strong>
+                    Read-only access
+                </strong>
+
+                Nothing in the database can be changed from here.
+
+            </div>
+
+
+        </aside>
+
+
+        <!-- ================= CHAT SECTION ================= -->
+
+        <section class="chat-section">
+
+
+            <!-- Scroll Area -->
+
+            <div
+                class="scroll-area"
+                id="scrollArea"
+            >
+
+
+                <!-- Empty State -->
+
+                <div
+                    id="emptyState"
+                    class="empty-state"
+                >
+
+                    <div class="empty-icon">
+                        BI
+                    </div>
+
+
+                    <h2>
+                        Ask your business data anything
+                    </h2>
+
+
+                    <p>
+                        Revenue, products, customers, trends —
+                        ask a question and get the answer
+                        along with the SQL behind it.
+                    </p>
+
+                </div>
+
+
+                <!-- Messages -->
+
+                <div
+                    id="messages"
+                    class="messages"
+                ></div>
+
+
+            </div>
+
+
+            <!-- ================= INPUT ================= -->
+
+            <div class="input-wrapper">
+
+
+                <div class="input-area">
+
+
+                    <textarea
+                        id="question"
+                        rows="1"
+                        placeholder="Ask about revenue, products or customers…"
+                    ></textarea>
+
+
+                    <button
+                        id="askButton"
+                        type="button"
+                    >
+
+                        <span>
+                            ↑
+                        </span>
+
+                        <span>
+                            Ask
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+                <div class="input-footer">
+
+                    <span>
+                        Enter to send, Shift + Enter for a new line
+                    </span>
+
+                    <span>
+                        Read-only connection
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <!-- Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Our JavaScript -->
+    <script src="/static/script.js"></script>
+
+
+</body>
+
+</html>
